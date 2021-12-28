@@ -4,7 +4,9 @@
     {
         public static int[] Tile_Arrays = new int[4 * 256 * 8 * 8]; // 65536 
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
         public static class Tiles
     {
         public static int[] Tile_Arrays = new int[4 * 256 * 8 * 8]; // 65536  
@@ -15,7 +17,7 @@
 
         public static void shift_left()
         {
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
             for (int y = 0; y < 8; y++)
             {
                 int temp = Tile_Arrays[z + (y * 8)]; // save the left most
@@ -29,7 +31,7 @@
 
         public static void shift_right()
         {
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
             for (int y = 0; y < 8; y++)
             {
                 int temp = Tile_Arrays[z + (y * 8) + 7]; // save the right most
@@ -43,7 +45,7 @@
 
         public static void shift_up()
         {
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
             for (int x = 0; x < 8; x++)
             {
                 int temp = Tile_Arrays[z + x]; // save the top most
@@ -57,7 +59,7 @@
 
         public static void shift_down()
         {
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
             for (int x = 0; x < 8; x++)
             {
                 int temp = Tile_Arrays[z + 56 + x]; // save the bottom most
@@ -71,7 +73,7 @@
 
         public static void tile_copy()
         {
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
             for (int x = 0; x < 64; x++)
             {
                 Tile_Copier[x] = Tile_Arrays[z + x];
@@ -83,8 +85,8 @@
         {
             if (Has_Copied == true)
             {
-                int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
-                if(Form1.bg_mode == 2) //2bpp
+                int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
+                if(frmMain.bg_mode == 2) //2bpp
                 {
                     for (int x = 0; x < 64; x++)
                     {
@@ -104,7 +106,7 @@
 
         public static void tile_delete()
         {
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
             for (int x = 0; x < 64; x++)
             {
                 Tile_Arrays[z + x] = 0;
@@ -113,7 +115,7 @@
 
         public static void tile_h_flip()
         {
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
             for (int y = 0; y < 8; y++)
             {
                 for (int x = 0; x < 4; x++)
@@ -128,7 +130,7 @@
 
         public static void tile_v_flip()
         {
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
             for (int y = 0; y < 4; y++)
             {
                 for (int x = 0; x < 8; x++)
@@ -142,7 +144,7 @@
 
         public static void tile_rot_cw() // R, rotate clockwise
         {
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
             int[] temp_arr = new int[64];
             int count = 0;
             for(int x = 0; x < 8; x++)
@@ -160,7 +162,7 @@
 
         public static void tile_rot_ccw() // L, rotate counter clockwise
         {
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
             int[] temp_arr = new int[64];
             int count = 0;
             for (int x = 7; x >= 0; x--)
@@ -178,8 +180,8 @@
 
         public static void tile_fill()
         { // fill with currently selected color.
-            int z = (Form1.tile_set * 256 * 8 * 8) + (Form1.tile_num * 8 * 8); // base index
-            int color = Form1.pal_x + (Form1.pal_y * 16);
+            int z = (frmMain.tile_set * 256 * 8 * 8) + (frmMain.tile_num * 8 * 8); // base index
+            int color = frmMain.pal_x + (frmMain.pal_y * 16);
             
             for (int x = 0; x < 64; x++)
             {
